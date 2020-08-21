@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -72,17 +73,49 @@ namespace JUST_Minecraft_Launcher
         {
             int idx = 0;
 
-            while(SlideIsRunning)
+            while (SlideIsRunning)
             {
-                if(!mr.WaitOne(5000))
-                {
-                    Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => slideShowIMG.Source = backgroundImg[idx]));
-                                        
-                    idx++;
+                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => {
 
-                    if (idx >= backgroundImg.Length) idx = 0;
+                    DoubleAnimation da = new DoubleAnimation
+                    {
+                        From = 0,
+                        To = 1,
+                        Duration = new Duration(TimeSpan.FromSeconds(4)),
+                        AutoReverse = true
+                    };
+
+                    DoubleAnimation da2 = new DoubleAnimation
+                    {
+                        From = 1,
+                        To = 2,
+                        Duration = new Duration(TimeSpan.FromSeconds(4)),
+                        AutoReverse = true
+                    };
+
+                    slideShowIMG.BeginAnimation(OpacityProperty, da2);
+                    slideShowIMG.BeginAnimation(OpacityProperty, da);
+
+                    slideShowIMG.Source = backgroundImg[idx];
+                }));
+
+                idx++;
+
+                if (idx >= backgroundImg.Length) idx = 0;
+
+                while(true)
+                {
+                    if (!mr.WaitOne(8000))
+                    {
+                        break;
+                    }
                 }
             }
+        }
+
+        public static void DoEvents()
+        {
+            Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate { }));
         }
 
         private void Window_Closed(object sender, EventArgs e)
