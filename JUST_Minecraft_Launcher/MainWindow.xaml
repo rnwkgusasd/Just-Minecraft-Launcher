@@ -65,6 +65,21 @@
                     <GradientStop Color="#0C000000" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
+            <Grid>
+                <Image x:Name="logo01_png" Margin="100,80,1237,617" Source="logo01.png" Stretch="Fill"/>
+                <TextBox x:Name="id" HorizontalAlignment="Left" Height="44" Margin="80,350,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.617,-1.304" FontSize="18" FontFamily="Century Gothic" VerticalContentAlignment="Center" Foreground="#FF9E9E9E" GotFocus="textBox_GotFocus" MaxLines="1"/>
+                <TextBox x:Name="pwd" HorizontalAlignment="Left" Height="44" Margin="80,445,0,0" TextWrapping="Wrap" Text="PASSWORD" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.617,-1.304" FontSize="18" FontFamily="Century Gothic" VerticalContentAlignment="Center" Foreground="#FF9E9E9E" GotFocus="textBox_GotFocus" MaxLines="1" TextChanged="textBox_Copy_TextChanged"/>
+                <Button x:Name="login" Margin="80,604,1220,201" FontFamily="Century Gothic" FontSize="24" BorderThickness="0" Content="LOGIN" Foreground="White" Click="login_Click" IsDefault="True" >
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0.5,1">
+                            <GradientStop Color="#FF2E1730" Offset="1"/>
+                            <GradientStop Color="#FF431447"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <CheckBox x:Name="checkBox" Content="자동 로그인" HorizontalAlignment="Left" Margin="271,507,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="14" Foreground="#FF9E9E9E" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+
+            </Grid>
         </Border>
 
     </Grid>

@@ -122,5 +122,58 @@ namespace JUST_Minecraft_Launcher
         {
             SlideIsRunning = false;
         }
+
+        private void textBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Foreground != Brushes.Black)
+            {
+                tb.Background = Brushes.White;
+                tb.Foreground = Brushes.Black;
+                tb.Text = "";
+            }
+        }
+
+        private string pwdText = "";
+
+        private void textBox_Copy_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+
+            string t = "";
+
+            for(int i = 0; i < tb.Text.Length; i++)
+            {
+                t += "*";
+            }
+
+            tb.Text = t;
+            tb.CaretIndex = tb.Text.Length;
+        }
+
+        private void login_Click(object sender, RoutedEventArgs e)
+        {
+            bool loginOK = true;
+
+            if(id.Text == "" || id.Foreground != Brushes.Black)
+            {
+                loginOK = false;
+                id.Background = Brushes.Tomato;
+                id.Foreground = Brushes.White;
+            }
+            if(pwd.Text == "" || pwd.Foreground != Brushes.Black)
+            {
+                loginOK = false;
+                pwd.Background = Brushes.Tomato;
+                pwd.Foreground = Brushes.White;
+            }
+
+            if(!loginOK)
+            {
+                return;
+            }
+
+            MessageBox.Show("");
+        }
     }
 }
