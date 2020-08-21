@@ -59,7 +59,7 @@
         </Border>
         <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="855" Margin="400,45,0,0" VerticalAlignment="Top" Width="1200">
             <Grid>
-                <Image x:Name="slideShowIMG" Margin="0,0,0,100" />
+                <Image x:Name="slideShowIMG" Margin="0,0,0,40" />
             </Grid>
         </Border>
 

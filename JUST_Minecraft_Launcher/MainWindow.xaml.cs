@@ -74,7 +74,7 @@ namespace JUST_Minecraft_Launcher
 
             while(SlideIsRunning)
             {
-                if(!mr.WaitOne(1000))
+                if(!mr.WaitOne(5000))
                 {
                     Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => slideShowIMG.Source = backgroundImg[idx]));
                                         
