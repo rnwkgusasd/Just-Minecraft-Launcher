@@ -99,31 +99,6 @@
                 </LinearGradientBrush>
             </Border.Background>
             <Grid>
-                <Ellipse Margin="254,0,718,300" StrokeThickness="10">
-                    <Ellipse.Stroke>
-                        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
-                            <GradientStop Color="#FF16131B"/>
-                            <GradientStop Offset="0.561" Color="#00000000"/>
-                        </LinearGradientBrush>
-                    </Ellipse.Stroke>
-                </Ellipse>
-
-                <Ellipse Margin="485,449,790,131" StrokeThickness="5">
-                    <Ellipse.Stroke>
-                        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
-                            <GradientStop Color="#FF16131B"/>
-                            <GradientStop Offset="0.561" Color="#00000000"/>
-                        </LinearGradientBrush>
-                    </Ellipse.Stroke>
-                </Ellipse>
-                <Ellipse Margin="-127,616,1402,-36" StrokeThickness="10">
-                    <Ellipse.Stroke>
-                        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
-                            <GradientStop Color="#FF16131B" Offset="1"/>
-                            <GradientStop Offset="0.414" Color="#00000000"/>
-                        </LinearGradientBrush>
-                    </Ellipse.Stroke>
-                </Ellipse>
                 <Image x:Name="logo01_png" Margin="71,105,1229,531" Source="logo02.png" Stretch="Fill"/>
                 <TextBox x:Name="id" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" Height="44" Margin="71,418,0,0" TextWrapping="NoWrap" AcceptsReturn="False" Text="ID" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.497,0.5" FontSize="18" FontFamily="Century Gothic" VerticalContentAlignment="Center" Foreground="#FF9E9E9E" GotFocus="textBox_GotFocus" MaxLines="1" LostFocus="textbox_LostFocus"/>
                 <TextBox x:Name="pwd" Visibility="Hidden" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" Height="44" Margin="389,508,0,0" TextWrapping="NoWrap" AcceptsReturn="False" Text="PASSWORD" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.497,0.455" FontSize="18" FontFamily="Century Gothic" VerticalContentAlignment="Center" Foreground="#FF9E9E9E" GotFocus="textBox_GotFocus" MaxLines="1" TextChanged="textBox_Copy_TextChanged" LostFocus="textbox_LostFocus"/>
@@ -148,7 +123,7 @@
                     </ContentControl>
                 </Button>
                 <Border x:Name="loginBorder" BorderBrush="#FF142E34" BorderThickness="5" HorizontalAlignment="Left" Height="110" Margin="66,689,0,0" VerticalAlignment="Top" Width="310" CornerRadius="5"/>
-
+                <TextBlock Margin="186,819,1347,45" Foreground="#FF767676" FontFamily="Century Gothic" FontSize="15"><Hyperlink NavigateUri="https://checkout.minecraft.net/ko-kr/store/minecraft/#register" RequestNavigate="Hyperlink_RequestNavigate" Foreground="#FF818283">SIGN UP</Hyperlink></TextBlock>
             </Grid>
         </Border>
         <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="53" Background="#FF2F293A">
