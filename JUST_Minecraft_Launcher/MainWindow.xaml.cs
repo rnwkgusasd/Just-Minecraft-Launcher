@@ -28,6 +28,7 @@ namespace JUST_Minecraft_Launcher
             InitializeComponent();
 
             closeImg.Source = new BitmapImage(new Uri(@"Resource\close.png", UriKind.RelativeOrAbsolute));
+            miniImg.Source = new BitmapImage(new Uri(@"Resource\minimize.png", UriKind.RelativeOrAbsolute));
         }
 
         private void DoClose(object sender, RoutedEventArgs e)
@@ -46,6 +47,11 @@ namespace JUST_Minecraft_Launcher
             {
                 this.Opacity = 1;
             }
+        }
+
+        private void DoMinimize(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -130,25 +136,56 @@ namespace JUST_Minecraft_Launcher
             {
                 tb.Background = Brushes.White;
                 tb.Foreground = Brushes.Black;
+                tb.BorderBrush = Brushes.LightSeaGreen;
                 tb.Text = "";
             }
+
+            tb.BorderThickness = new Thickness(4);
         }
 
-        private string pwdText = "";
+        private void passwordBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            PasswordBox tb = (PasswordBox)sender;
+            if (tb.Foreground != Brushes.Black)
+            {
+                tb.Background = Brushes.White;
+                tb.Foreground = Brushes.Black;
+                tb.BorderBrush = Brushes.LightSeaGreen;
+                tb.Password = "";
+            }
+
+            tb.BorderThickness = new Thickness(4);
+        }
+
+        private void textbox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.BorderThickness = new Thickness(1);
+        }
+
+        private void passwordbox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            PasswordBox tb = (PasswordBox)sender;
+            tb.BorderThickness = new Thickness(1);
+        }
+
+        public string pwdText = "";
 
         private void textBox_Copy_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
 
-            string t = "";
+            pwdText = tb.Text;
 
-            for(int i = 0; i < tb.Text.Length; i++)
-            {
-                t += "*";
-            }
+            //string t = "";
 
-            tb.Text = t;
-            tb.CaretIndex = tb.Text.Length;
+            //for(int i = 0; i < tb.Text.Length; i++)
+            //{
+            //    t += "*";
+            //}
+
+            //tb.Text = t;
+            //tb.CaretIndex = tb.Text.Length;
         }
 
         private void login_Click(object sender, RoutedEventArgs e)
@@ -160,12 +197,14 @@ namespace JUST_Minecraft_Launcher
                 loginOK = false;
                 id.Background = Brushes.Tomato;
                 id.Foreground = Brushes.White;
+                id.BorderBrush = Brushes.Red;
             }
-            if(pwd.Text == "" || pwd.Foreground != Brushes.Black)
+            if(pwd2.Password == "" || pwd2.Foreground != Brushes.Black)
             {
                 loginOK = false;
-                pwd.Background = Brushes.Tomato;
-                pwd.Foreground = Brushes.White;
+                pwd2.Background = Brushes.Tomato;
+                pwd2.Foreground = Brushes.White;
+                pwd2.BorderBrush = Brushes.Red;
             }
 
             if(!loginOK)
@@ -173,7 +212,12 @@ namespace JUST_Minecraft_Launcher
                 return;
             }
 
-            MessageBox.Show("");
+            MessageBox.Show($"{id.Text} / {pwd2.Password}");
+        }
+
+        private void MouseLeftButtonDown_FrmMove(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }
