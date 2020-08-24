@@ -150,7 +150,7 @@
     <Resource Include="logo03.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SRC\MinecraftLauncherLibrary\CmlLib\CmlLib.csproj">
+    <ProjectReference Include="..\MinecraftLauncherLibrary-master\CmlLib\CmlLib.csproj">
       <Project>{6b013934-3114-4064-bc4c-30de40c732bc}</Project>
       <Name>CmlLib</Name>
     </ProjectReference>
