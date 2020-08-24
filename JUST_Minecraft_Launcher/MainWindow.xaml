@@ -124,6 +124,7 @@
                 </Button>
                 <Border x:Name="loginBorder" BorderBrush="#FF142E34" BorderThickness="5" HorizontalAlignment="Left" Height="110" Margin="66,689,0,0" VerticalAlignment="Top" Width="310" CornerRadius="5"/>
                 <TextBlock Margin="186,819,1347,45" Foreground="#FF767676" FontFamily="Century Gothic" FontSize="15"><Hyperlink NavigateUri="https://checkout.minecraft.net/ko-kr/store/minecraft/#register" RequestNavigate="Hyperlink_RequestNavigate" Foreground="#FF818283">SIGN UP</Hyperlink></TextBlock>
+                
             </Grid>
         </Border>
         <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="53" Background="#FF2F293A">

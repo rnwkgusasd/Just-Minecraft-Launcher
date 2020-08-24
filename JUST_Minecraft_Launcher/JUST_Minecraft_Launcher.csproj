@@ -77,6 +77,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MinecraftUtil.cs" />
     <Compile Include="Modal.xaml.cs">
       <DependentUpon>Modal.xaml</DependentUpon>
     </Compile>
@@ -147,6 +148,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="logo03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SRC\MinecraftLauncherLibrary\CmlLib\CmlLib.csproj">
+      <Project>{6b013934-3114-4064-bc4c-30de40c732bc}</Project>
+      <Name>CmlLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

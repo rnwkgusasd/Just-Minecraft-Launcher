@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -60,6 +61,22 @@ namespace JUST_Minecraft_Launcher
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             SlideStart();
+
+            mine = new Minecraft(Environment.GetEnvironmentVariable("APPDATA") + "\\.minecraft");
+            mine.Downloader_ChangeFile = Downloader_ChangeFile;
+            mine.Downloader_ChangeProgress = Downloader_ChangeProgress;
+
+            LoadConfig();
+        }
+
+        private void Downloader_ChangeProgress(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void Downloader_ChangeFile(CmlLib.Launcher.DownloadFileChangedEventArgs e)
+        {
+
         }
 
         private ManualResetEvent mr = new ManualResetEvent(false);
@@ -191,31 +208,107 @@ namespace JUST_Minecraft_Launcher
             //tb.CaretIndex = tb.Text.Length;
         }
 
+        private Minecraft mine;
         private void login_Click(object sender, RoutedEventArgs e)
         {
-            bool loginOK = true;
-
-            if(id.Text == "" || id.Foreground != Brushes.Black)
+            if(login.Content.ToString() == "LOGIN")
             {
-                loginOK = false;
-                id.Background = Brushes.Tomato;
-                id.Foreground = Brushes.White;
-                id.BorderBrush = Brushes.Red;
+                bool loginOK = true;
+
+                if (id.Text == "" || id.Foreground != Brushes.Black)
+                {
+                    loginOK = false;
+                    id.Background = Brushes.Tomato;
+                    id.Foreground = Brushes.White;
+                    id.BorderBrush = Brushes.Red;
+                }
+                if (pwd2.Password == "" || pwd2.Foreground != Brushes.Black)
+                {
+                    loginOK = false;
+                    pwd2.Background = Brushes.Tomato;
+                    pwd2.Foreground = Brushes.White;
+                    pwd2.BorderBrush = Brushes.Red;
+                }
+
+                if (!mine.MinecraftLogin(id.Text, pwd2.Password))
+                {
+                    loginOK = false;
+                    pwd2.Background = Brushes.Tomato;
+                    pwd2.Foreground = Brushes.White;
+                    pwd2.BorderBrush = Brushes.Red;
+
+                    id.Background = Brushes.Tomato;
+                    id.Foreground = Brushes.White;
+                    id.BorderBrush = Brushes.Red;
+                }
+
+                if (!loginOK)
+                {
+                    return;
+                }
+
+                login.Content = "START";
             }
-            if(pwd2.Password == "" || pwd2.Foreground != Brushes.Black)
+            else
             {
-                loginOK = false;
-                pwd2.Background = Brushes.Tomato;
-                pwd2.Foreground = Brushes.White;
-                pwd2.BorderBrush = Brushes.Red;
+                mine.MinecraftStart("");
             }
 
-            if(!loginOK)
+            SaveConfig();
+        }
+
+        private string FILE_PATH = System.IO.Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + "\\config.cfg";
+
+        private string SERVER_IP = "";
+        private bool AUTO_LOGIN = false;
+
+        private void SaveConfig()
+        {
+            string txt = "";
+
+            foreach(var c in pwd2.Password.Reverse())
             {
-                return;
+                txt += c;
             }
 
-            MessageBox.Show($"{id.Text} / {pwd2.Password}");
+            File.WriteAllLines(FILE_PATH, new string[] { $"AUTO_LOGIN:{checkBox.IsChecked}", $"CONNECT_SERVER_IP:{SERVER_IP}",
+                                                        $"LOGIN_ID:{id.Text}", $"LOGIN_PWD:{txt}"});
+        }
+
+        private void LoadConfig()
+        {
+            if(!File.Exists(FILE_PATH))
+            {
+                File.Create(FILE_PATH);
+            }
+
+            string[] rData = File.ReadAllLines(FILE_PATH);
+
+            if(rData.Length > 0)
+            {
+                Boolean.TryParse(rData[0].Split(':')[1], out AUTO_LOGIN);
+                SERVER_IP = rData[1].Split(':')[1];
+
+                checkBox.IsChecked = AUTO_LOGIN;
+
+                if (AUTO_LOGIN)
+                {
+                    id.Focus();
+                    pwd2.Focus();
+
+                    id.Text = rData[2].Split(':')[1];
+
+                    string txt = "";
+
+                    foreach (var c in rData[3].Split(':')[1].Reverse())
+                    {
+                        txt += c;
+                    }
+
+                    pwd2.Password = txt;
+                    login_Click(null, null);
+                }
+            }
         }
 
         private void MouseLeftButtonDown_FrmMove(object sender, MouseButtonEventArgs e)
