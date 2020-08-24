@@ -117,13 +117,18 @@
                 <TextBox x:Name="id" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" Height="44" Margin="71,418,0,0" TextWrapping="NoWrap" AcceptsReturn="False" Text="ID" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.497,0.5" FontSize="18" FontFamily="Century Gothic" VerticalContentAlignment="Center" Foreground="#FF9E9E9E" GotFocus="textBox_GotFocus" MaxLines="1" LostFocus="textbox_LostFocus"/>
                 <TextBox x:Name="pwd" Visibility="Hidden" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" Height="44" Margin="389,508,0,0" TextWrapping="NoWrap" AcceptsReturn="False" Text="PASSWORD" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.497,0.455" FontSize="18" FontFamily="Century Gothic" VerticalContentAlignment="Center" Foreground="#FF9E9E9E" GotFocus="textBox_GotFocus" MaxLines="1" TextChanged="textBox_Copy_TextChanged" LostFocus="textbox_LostFocus"/>
                 <PasswordBox x:Name="pwd2" Height="44" Margin="71,508,0,308" Template="{StaticResource PasswordBoxBaseControlTemplate}" HorizontalAlignment="Left" Width="300" FontSize="18" FontFamily="Century Gothic" VerticalContentAlignment="Center" Foreground="#FF9E9E9E" GotFocus="passwordBox_GotFocus" LostFocus="passwordbox_LostFocus" Password="PASSWORD" />
-                <Button x:Name="login" Margin="71,672,1229,133" FontFamily="Century Gothic" FontSize="24" BorderThickness="0" Content="LOGIN" Foreground="White" Click="login_Click" IsDefault="True" >
+                <Button x:Name="login" Margin="71,689,1229,82" FontFamily="Century Gothic" FontSize="48" BorderThickness="0" Content="LOGIN" Foreground="White" Click="login_Click" IsDefault="True" >
                     <Button.Background>
-                        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0.5,1">
-                            <GradientStop Color="#FF2E1730" Offset="1"/>
-                            <GradientStop Color="#FF431447"/>
+                        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0">
+                            <GradientStop Color="#FF1D353A" Offset="1"/>
+                            <GradientStop Color="#FF195663"/>
                         </LinearGradientBrush>
                     </Button.Background>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
                 </Button>
                 <CheckBox x:Name="checkBox" Content="자동 로그인" HorizontalAlignment="Left" Margin="262,575,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="14" Foreground="#FF9E9E9E" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
 
