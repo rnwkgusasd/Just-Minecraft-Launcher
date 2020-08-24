@@ -28,7 +28,9 @@ namespace JUST_Minecraft_Launcher
             InitializeComponent();
 
             closeImg.Source = new BitmapImage(new Uri(@"Resource\close.png", UriKind.RelativeOrAbsolute));
-            miniImg.Source = new BitmapImage(new Uri(@"Resource\minimize.png", UriKind.RelativeOrAbsolute));
+            //miniImg.Source = new BitmapImage(new Uri(@"Resource\minimize.png", UriKind.RelativeOrAbsolute));
+
+            login.BorderBrush = Brushes.DarkSeaGreen;
         }
 
         private void DoClose(object sender, RoutedEventArgs e)
@@ -218,6 +220,21 @@ namespace JUST_Minecraft_Launcher
         private void MouseLeftButtonDown_FrmMove(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        Brush mBrush;
+
+        private void login_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if(mBrush == null)
+                mBrush = loginBorder.BorderBrush;
+
+            loginBorder.BorderBrush = Brushes.LightCyan;
+        }
+
+        private void login_MouseLeave(object sender, MouseEventArgs e)
+        {
+            loginBorder.BorderBrush = mBrush;
         }
     }
 }

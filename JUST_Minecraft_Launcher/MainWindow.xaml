@@ -81,31 +81,17 @@
     </Window.Background>
 
     <Grid>
-        <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="1547" Margin="53,0,0,0" MouseLeftButtonDown="MouseLeftButtonDown_FrmMove">
+        <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="19" VerticalAlignment="Top" Width="1547" Margin="53,0,0,0" MouseLeftButtonDown="MouseLeftButtonDown_FrmMove">
             <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF343232" Offset="0.97"/>
                     <GradientStop Color="#FF4D4D4D"/>
                 </LinearGradientBrush>
             </Border.Background>
-            <Grid>
-                <Button x:Name="button" Margin="1512,0,10,0" BorderThickness="0" BorderBrush="Transparent" Style="{StaticResource MyButtonStyle}" Click="DoClose">
-                    <ContentControl>
-                        <Image x:Name="closeImg"/>
-                    </ContentControl>
-                </Button>
-                <Button x:Name="button2" Margin="1482,0,40,0" BorderThickness="0" BorderBrush="Transparent" Style="{StaticResource MyButtonStyle}" Click="DoMinimize">
-                    <ContentControl>
-                        <Image x:Name="miniImg"/>
-                    </ContentControl>
-                </Button>
-            </Grid>
+            <Grid/>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="53" Background="#FF2F293A">
-            <Image x:Name="image" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="34" Source="logo.png" Margin="10,4,0,0"/>
-        </Border>
-        <Image x:Name="slideShowIMG" Margin="400,40,0,0" Stretch="Fill" />
-        <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="860" Margin="0,40,0,0" VerticalAlignment="Top" Width="1600">
+        <Image x:Name="slideShowIMG" Margin="400,19,0,0" Stretch="Fill" />
+        <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="881" Margin="1,19,-1,0" VerticalAlignment="Top" Width="1600">
             <Border.Background>
                 <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                     <GradientStop Color="#FF2F293A" Offset="0.293"/>
@@ -113,11 +99,36 @@
                 </LinearGradientBrush>
             </Border.Background>
             <Grid>
-                <Image x:Name="logo01_png" Margin="93,127,1244,531" Source="logo02.png" Stretch="Fill"/>
+                <Ellipse Margin="254,0,718,300" StrokeThickness="10">
+                    <Ellipse.Stroke>
+                        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                            <GradientStop Color="#FF16131B"/>
+                            <GradientStop Offset="0.561" Color="#00000000"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Stroke>
+                </Ellipse>
+
+                <Ellipse Margin="485,449,790,131" StrokeThickness="5">
+                    <Ellipse.Stroke>
+                        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                            <GradientStop Color="#FF16131B"/>
+                            <GradientStop Offset="0.561" Color="#00000000"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Stroke>
+                </Ellipse>
+                <Ellipse Margin="-127,616,1402,-36" StrokeThickness="10">
+                    <Ellipse.Stroke>
+                        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                            <GradientStop Color="#FF16131B" Offset="1"/>
+                            <GradientStop Offset="0.414" Color="#00000000"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Stroke>
+                </Ellipse>
+                <Image x:Name="logo01_png" Margin="71,105,1229,531" Source="logo02.png" Stretch="Fill"/>
                 <TextBox x:Name="id" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" Height="44" Margin="71,418,0,0" TextWrapping="NoWrap" AcceptsReturn="False" Text="ID" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.497,0.5" FontSize="18" FontFamily="Century Gothic" VerticalContentAlignment="Center" Foreground="#FF9E9E9E" GotFocus="textBox_GotFocus" MaxLines="1" LostFocus="textbox_LostFocus"/>
                 <TextBox x:Name="pwd" Visibility="Hidden" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" Height="44" Margin="389,508,0,0" TextWrapping="NoWrap" AcceptsReturn="False" Text="PASSWORD" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.497,0.455" FontSize="18" FontFamily="Century Gothic" VerticalContentAlignment="Center" Foreground="#FF9E9E9E" GotFocus="textBox_GotFocus" MaxLines="1" TextChanged="textBox_Copy_TextChanged" LostFocus="textbox_LostFocus"/>
                 <PasswordBox x:Name="pwd2" Height="44" Margin="71,508,0,308" Template="{StaticResource PasswordBoxBaseControlTemplate}" HorizontalAlignment="Left" Width="300" FontSize="18" FontFamily="Century Gothic" VerticalContentAlignment="Center" Foreground="#FF9E9E9E" GotFocus="passwordBox_GotFocus" LostFocus="passwordbox_LostFocus" Password="PASSWORD" />
-                <Button x:Name="login" Margin="71,689,1229,82" FontFamily="Century Gothic" FontSize="48" BorderThickness="0" Content="LOGIN" Foreground="White" Click="login_Click" IsDefault="True" >
+                <Button x:Name="login" Margin="71,689,1229,82" FontFamily="Century Gothic" FontSize="48" BorderThickness="0" Content="LOGIN" Foreground="White" Click="login_Click" IsDefault="True" BorderBrush="#FF142E34" MouseEnter="login_MouseEnter" MouseLeave="login_MouseLeave" >
                     <Button.Background>
                         <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0">
                             <GradientStop Color="#FF1D353A" Offset="1"/>
@@ -130,9 +141,18 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <CheckBox x:Name="checkBox" Content="자동 로그인" HorizontalAlignment="Left" Margin="262,575,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="14" Foreground="#FF9E9E9E" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                <CheckBox x:Name="checkBox" Content="자동 로그인" HorizontalAlignment="Left" Margin="71,595,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="14" Foreground="#FF9E9E9E" VerticalContentAlignment="Center"/>
+                <Button x:Name="button" Margin="1550,10,25,841" BorderThickness="0" BorderBrush="Transparent" Style="{StaticResource MyButtonStyle}" Click="DoClose">
+                    <ContentControl>
+                        <Image x:Name="closeImg"/>
+                    </ContentControl>
+                </Button>
+                <Border x:Name="loginBorder" BorderBrush="#FF142E34" BorderThickness="5" HorizontalAlignment="Left" Height="110" Margin="66,689,0,0" VerticalAlignment="Top" Width="310" CornerRadius="5"/>
 
             </Grid>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="53" Background="#FF2F293A">
+            <Image x:Name="image" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="33" Source="logo.png" Margin="10,4,0,0"/>
         </Border>
 
     </Grid>
